@@ -20,6 +20,7 @@ import {ButtonModule} from "primeng/button";
 import { TestimonyComponent } from './pages/testimony/testimony.component';
 import { NewsComponent } from './pages/news/news.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import {PanelModule} from "primeng/panel";
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     BrowserAnimationsModule,
     ButtonModule,
     AppRoutingModule,
+    PanelModule,
     IskonaMenuModule,
     StoreModule.forRoot(reducers),
     AuthFormModule,

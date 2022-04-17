@@ -6,6 +6,7 @@ import {CommonModule} from "@angular/common";
 import {InputTextModule} from "primeng/inputtext";
 import {BrowserModule} from "@angular/platform-browser";
 import {SplitButtonModule} from "primeng/splitbutton";
+import {MegaMenuModule} from "primeng/megamenu";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {SplitButtonModule} from "primeng/splitbutton";
     MenubarModule,
     ButtonModule,
     InputTextModule,
-    SplitButtonModule
+    SplitButtonModule,
+    MegaMenuModule
   ],
   exports: [
     MenuComponent
