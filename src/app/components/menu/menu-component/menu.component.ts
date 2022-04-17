@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
+import {select, Store} from "@ngrx/store";
+import {selectUser} from "../../../store/user/user.selectors";
+import {User} from "../../../store/user/user.types";
+import {AppState} from "../../../store/app.state";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
+import {AuthService} from "../../../services";
+
 
 @Component({
   selector: 'app-menu',
@@ -11,18 +19,67 @@ import {Title} from "@angular/platform-browser";
 export class MenuComponent implements OnInit {
   public items: MenuItem[] = [];
 
-  constructor(private route: Router, private title: Title) {
+  public userSettings = [
+    {
+      label: 'Профиль',
+      icon: 'pi pi-user',
+      command: () => {
+        //
+      }
+    },
+    {
+      label: 'Выйти',
+      icon: 'pi pi-power-off',
+      command: () => {
+        this.logout();
+      }
+    }
+  ];
+
+  public isLogin$: Observable<boolean> = this.store.pipe(
+    select(selectUser),
+    map((user: User | undefined) => !!user?.username)
+  );
+
+   public userName$: Observable<string | undefined> = this.store.pipe(
+    select(selectUser),
+    map((user: User | undefined) => user?.username)
+  );
+
+
+  constructor(
+    private route: Router,
+    private title: Title,
+    private store: Store<AppState>,
+    private authService: AuthService
+  ) {
   }
 
   ngOnInit() {
+
     this.items = [
       {
-        label:'Home',
+        label:'Главная',
         icon:'pi pi-fw pi-home',
         command: (event) => this.routeMenu(event.item.label, 'home')
       },
       {
-        label:'About',
+        label:'Показания счётчиков',
+        icon:'pi pi-fw pi-dollar',
+        command: (event) => this.routeMenu(event.item.label, 'testimony')
+      },
+      {
+        label:'Новости',
+        icon:'pi pi-fw pi-book',
+        command: (event) => this.routeMenu(event.item.label, 'news')
+      },
+      {
+        label:'Галерея',
+        icon:'pi pi-fw pi-image',
+        command: (event) => this.routeMenu(event.item.label, 'gallery')
+      },
+      {
+        label:'Информация',
         icon:'pi pi-fw pi-info-circle',
         command: (event) => this.routeMenu(event.item.label, 'about')
       }
@@ -32,5 +89,9 @@ export class MenuComponent implements OnInit {
   public routeMenu(label: string, path: string): void {
     this.route.navigate([path]);
     this.title.setTitle(label)
+  }
+
+  public logout(): void {
+    this.authService.logout();
   }
 }

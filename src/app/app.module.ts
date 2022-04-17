@@ -13,6 +13,13 @@ import {StoreModule} from "@ngrx/store";
 import {userReducer} from "./store/user/user.reducer";
 import {AuthFormModule} from "./components/auth-form";
 import {ReactiveFormsModule} from "@angular/forms";
+import {reducers} from "./store/app.state";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import {ButtonModule} from "primeng/button";
+import { TestimonyComponent } from './pages/testimony/testimony.component';
+import { NewsComponent } from './pages/news/news.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
 
 
 @NgModule({
@@ -20,18 +27,23 @@ import {ReactiveFormsModule} from "@angular/forms";
     AppComponent,
     AboutComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TestimonyComponent,
+    NewsComponent,
+    GalleryComponent,
 
   ],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ButtonModule,
     AppRoutingModule,
     IskonaMenuModule,
-    StoreModule.forRoot({ user: userReducer }),
+    StoreModule.forRoot(reducers),
     AuthFormModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

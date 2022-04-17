@@ -1,9 +1,10 @@
-import {State} from "./user.reducer";
+import {UserState} from "./user.reducer";
 import {createSelector} from "@ngrx/store";
+import {AppState} from "../app.state";
 
-export const selectState = (state: State) => state;
+export const selectedUser = (state: AppState) => state.user;
 
 export const selectUser = createSelector(
-  selectState,
-  (state: State) => state.user
+  selectedUser,
+  (state: UserState) => state.user
 )

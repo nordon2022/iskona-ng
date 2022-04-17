@@ -2,32 +2,31 @@ import {User} from "../store/user/user.types";
 
 ﻿import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { of } from 'rxjs';
-import {BehaviorSubject} from "rxjs";
-import {Store} from "@ngrx/store";
+import { Store} from "@ngrx/store";
 import {Login, Logout} from "../store/user/user.action";
-import {Subject} from "rxjs";
-import {selectUser} from "../store/user/user.selectors";
+import {AppState} from "../store/app.state";
 
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  public user: Observable<User> = of({username: 'nordon', password: 'nordon1'});
+  public user: User | undefined;
 
-  constructor(private store: Store, private router: Router) {
+  constructor(private store: Store<AppState>, private router: Router) {
 
   }
 
   login(user: User) {
+    this.user = user;
+    // TODO временное хранение в локалсторе
+    localStorage.setItem('user', JSON.stringify(user))
     this.store.dispatch(Login(user))
   }
 
   logout() {
-    // remove user from local storage and set current user to null
+    this.user = undefined;
     this.store.dispatch(Logout());
-    this.router.navigate(['/account/login']);
+    localStorage.clear();
+    this.router.navigate(['/auth/login']);
   }
   //
   // login(username, password) {

@@ -7,6 +7,6 @@ export const Login = createAction(
 );
 
 export const Logout = createAction(
-  '[Login Page] Logout'
+  '[Logout Page] Logout'
 );
 

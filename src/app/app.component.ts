@@ -14,7 +14,10 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.accountService.user.subscribe(x => this.user = x);
+    const user: User =  JSON.parse(localStorage.getItem('user') || '{}');
+    if (user?.username) {
+      this.accountService.login(user);
+    }
   }
 
   title = 'Искона';

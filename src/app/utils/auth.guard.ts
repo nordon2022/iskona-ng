@@ -1,13 +1,13 @@
 ﻿import {AuthService} from "../services";
-
 ﻿import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import {select, Store} from "@ngrx/store";
-import {State} from "../store/user/user.reducer";
+import {UserState} from "../store/user/user.reducer";
 import {selectUser} from "../store/user/user.selectors";
 import {last, map, take, takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
 import {Observable} from "rxjs";
+import {AppState} from "../store/app.state";
 
 
 @Injectable({ providedIn: 'root' })
@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private accountService: AuthService,
-    private store: Store<State>
+    private store: Store<AppState>
   ) {
     this.store
       .pipe(select(selectUser),
