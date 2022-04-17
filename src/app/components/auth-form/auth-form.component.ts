@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services";
-import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-reg-form',
@@ -12,9 +11,8 @@ export class AuthFormComponent {
     private router: Router,
     private authService: AuthService,
   ) {
-
-
+    if (this.authService.user !== undefined) {
       this.router.navigate(['/']);
-
+    }
   }
 }
