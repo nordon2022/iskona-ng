@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {User} from "./user.types";
+import {User, UserInfo} from "./user.types";
 
 export const Login = createAction(
   '[Login Page] Login',
@@ -10,3 +10,7 @@ export const Logout = createAction(
   '[Logout Page] Logout'
 );
 
+export const Register = createAction(
+  '[Register Page] Register',
+  props<UserInfo>()
+);
