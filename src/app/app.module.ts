@@ -22,6 +22,7 @@ import { NewsComponent } from './pages/news/news.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import {PanelModule} from "primeng/panel";
 import {TableModule} from "primeng/table";
+import {MapModule} from "./components/map/map.module";
 
 
 @NgModule({
@@ -32,8 +33,7 @@ import {TableModule} from "primeng/table";
     PageNotFoundComponent,
     TestimonyComponent,
     NewsComponent,
-    GalleryComponent,
-
+    GalleryComponent
   ],
   imports: [
     CommonModule,
@@ -48,6 +48,7 @@ import {TableModule} from "primeng/table";
     ReactiveFormsModule,
     TableModule,
     FormsModule,
+    MapModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
