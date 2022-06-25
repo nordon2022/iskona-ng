@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {AuthService} from "../../../services";
 import {Router} from "@angular/router";
+import {AuthService} from "../../../shared/services/auth.service";
 
 @Component({
   selector: 'app-auth-form',
@@ -20,16 +20,17 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
-    private route: Router
+    private route: Router,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
   public submitForm(): void {
-    this.authService.login(this.form.value);
-    this.route.navigate(['/home']);
+    this.authService.SignIn(this.form.value.username, this.form.value.password);
+    // this.authService.login(this.form.value);
+
   }
 
   public register(): void {
