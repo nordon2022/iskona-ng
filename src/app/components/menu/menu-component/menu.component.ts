@@ -8,7 +8,7 @@ import {User} from "../../../store/user/user.types";
 import {AppState} from "../../../store/app.state";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {AuthService} from "../../../services";
+import {AuthService} from "../../../shared/services/auth.service";
 
 
 @Component({
@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
       label: 'Профиль',
       icon: 'pi pi-user',
       command: () => {
-        //
+        this.route.navigate(['dashboard']);
       }
     },
     {
@@ -40,6 +40,9 @@ export class MenuComponent implements OnInit {
     select(selectUser),
     map((user: User | undefined) => !!user?.username)
   );
+
+
+  // public userName: string = this.authService?.userData?.email;
 
    public userName$: Observable<string | undefined> = this.store.pipe(
     select(selectUser),
@@ -92,6 +95,6 @@ export class MenuComponent implements OnInit {
   }
 
   public logout(): void {
-    this.authService.logout();
+    this.authService.SignOut();
   }
 }

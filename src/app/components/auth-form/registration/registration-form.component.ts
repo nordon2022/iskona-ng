@@ -1,24 +1,30 @@
 import {Component} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validator, Validators} from "@angular/forms";
+import {AuthService} from "../../../shared/services/auth.service";
 
 @Component({
   selector: 'app-reg-form',
   templateUrl: './registration-form.component.html'
 })
 export class RegistrationFormComponent {
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
   }
+  // public form: FormGroup = this.fb.group({
+  //   firstName: ['', Validators.required],
+  //   lastName: ['', Validators.required],
+  //   username: ['', Validators.required],
+  //   password: ['', Validators.required],
+  //   repeat_password: ['', Validators.required],
+  // })
+
   public form: FormGroup = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-    repeat_password: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required]
   })
 
   public loading: boolean = false;
 
   public onSubmit(): void {
-    console.log(this.form.getRawValue())
+    this.authService.SignUp(this.form.value.email, this.form.value.password);
   }
 }

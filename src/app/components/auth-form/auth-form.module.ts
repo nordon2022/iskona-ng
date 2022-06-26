@@ -9,12 +9,14 @@ import {AuthFormComponent} from "./auth-form.component";
 import {AuthRoutingModule} from "./auth-routing.module";
 import {CommonModule} from "@angular/common";
 import {ImageModule} from "primeng/image";
+import {ForgotPasswordComponent} from "../forgot-password/forgot-password.component";
 
 @NgModule({
   declarations: [
     LoginFormComponent,
     RegistrationFormComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,
