@@ -37,4 +37,8 @@ export class LoginFormComponent implements OnInit {
     this.route.navigate(['/auth/register']);
   }
 
+  public forgotPassword(): void {
+    this.route.navigate(['/auth/forgot']);
+  }
+
 }

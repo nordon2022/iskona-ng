@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
       label: 'Профиль',
       icon: 'pi pi-user',
       command: () => {
-        //
+        this.route.navigate(['dashboard']);
       }
     },
     {
