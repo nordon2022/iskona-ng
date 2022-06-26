@@ -14,7 +14,7 @@ import {AuthFormModule} from "./components/auth-form";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {reducers} from "./store/app.state";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import {environment, firebaseConfig} from '../environments/environment';
+import {environment} from '../environments/environment';
 import {ButtonModule} from "primeng/button";
 import { TestimonyComponent } from './pages/testimony/testimony.component';
 import { NewsComponent } from './pages/news/news.component';
@@ -28,6 +28,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import {AuthService} from "./shared/services/auth.service";
+import {firebaseConfig} from "../environments/environment.prod";
 
 
 @NgModule({
