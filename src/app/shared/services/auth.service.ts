@@ -47,15 +47,17 @@ export class AuthService {
         this.ngZone.run(() => {
           setTimeout(() => {
             this.router.navigate(['home']);
-          }, 0)
+          }, 5)
         });
         this.SetUserData(result.user);
+        console.log(result, 'res')
+        this.router.navigate(['home']);
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
-  // Sign up with email/password
+
   SignUp(email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
@@ -69,7 +71,6 @@ export class AuthService {
         window.alert(error.message);
       });
   }
-  // Send email verfificaiton when new user sign up
   SendVerificationMail() {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
