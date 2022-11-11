@@ -10,6 +10,7 @@ import {VerifyEmailComponent} from "./components/verify-email/verify-email.compo
 import {ForgotPasswordComponent} from "./components/forgot-password/forgot-password.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {AuthGuard} from "./shared/guard/auth.guard";
+import { SkyengComponent } from './pages/skyeng/skyeng.component';
 
 const authModule = () => import('./components/auth-form/auth-form.module').then(x => x.AuthFormModule);
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'gallery', component: GalleryComponent, canActivate: [AuthGuard] },
   { path: 'news', component: NewsComponent, canActivate: [AuthGuard] },
+  { path: 'skyeng', component: SkyengComponent, canActivate: [AuthGuard] },
   { path: 'testimony', component: TestimonyComponent, canActivate: [AuthGuard] },
   { path: 'auth', loadChildren: authModule},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]  },

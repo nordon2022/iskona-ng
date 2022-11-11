@@ -29,7 +29,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import {AuthService} from "./shared/services/auth.service";
 import {firebaseConfig} from "../environments/environment.prod";
-
+import { SkyengComponent } from './pages/skyeng/skyeng.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import {firebaseConfig} from "../environments/environment.prod";
     DashboardComponent,
     SignInComponent,
     SignUpComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    SkyengComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +61,8 @@ import {firebaseConfig} from "../environments/environment.prod";
     ReactiveFormsModule,
     TableModule,
     FormsModule,
+    FileUploadModule,
+    HttpClientModule,
     MapModule,
     AngularFireModule.initializeApp(firebaseConfig, 'iskona-ng'),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
