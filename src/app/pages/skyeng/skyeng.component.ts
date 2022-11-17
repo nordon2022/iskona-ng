@@ -45,7 +45,7 @@ export class SkyengComponent implements OnInit {
     const keyWord = ['ученика', 'учеников'];
     const res = teachers
     .map((field: any) => ({ ...field, advantages: field.advantages.filter((advantage: {code: string}) => keyWord.some(word => advantage.code.includes(word))) }))
-      .map((field: any) => ({ ...field, advantages: Number(field.advantages[0]?.code.match(/\d+/)[0]) }))
+      .map((field: any) => ({ ...field, advantages: Number(field.advantages[0]?.code.match(/\d+/)[0] || '0') }))
     return res;
 
   }
@@ -57,6 +57,7 @@ export class SkyengComponent implements OnInit {
     fileReader.onload = () => {
       this.teachers = this.teachers.concat(this.parseTeachers(JSON.parse(fileReader.result?.toString() as string).data));
     }
+    console.log(this.teachers)
     fileReader.onerror = (error) => {
       console.log(error);
     }
