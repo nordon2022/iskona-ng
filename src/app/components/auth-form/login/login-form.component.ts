@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../shared/services/auth.service";
 
@@ -13,13 +13,13 @@ export class LoginFormComponent implements OnInit {
 
   public imgLogIn: string = '../../../../assets/beautiful-pine-trees-mountains.jpg';
 
-  public form: FormGroup = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl()
+  public form: UntypedFormGroup = new UntypedFormGroup({
+    username: new UntypedFormControl(),
+    password: new UntypedFormControl()
   });
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: Router,
     public authService: AuthService
   ) { }

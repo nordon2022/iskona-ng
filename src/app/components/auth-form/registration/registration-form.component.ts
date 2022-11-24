@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup, Validator, Validators} from "@angular/forms";
+import {UntypedFormBuilder, FormControl, UntypedFormGroup, Validator, Validators} from "@angular/forms";
 import {AuthService} from "../../../shared/services/auth.service";
 
 @Component({
@@ -7,7 +7,7 @@ import {AuthService} from "../../../shared/services/auth.service";
   templateUrl: './registration-form.component.html'
 })
 export class RegistrationFormComponent {
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: UntypedFormBuilder, private authService: AuthService) {
   }
   // public form: FormGroup = this.fb.group({
   //   firstName: ['', Validators.required],
@@ -17,7 +17,7 @@ export class RegistrationFormComponent {
   //   repeat_password: ['', Validators.required],
   // })
 
-  public form: FormGroup = this.fb.group({
+  public form: UntypedFormGroup = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required]
   })
