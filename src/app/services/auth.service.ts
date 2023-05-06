@@ -1,6 +1,6 @@
 import {User} from "../store/user/user.types";
 
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store} from "@ngrx/store";
 import {Login, Logout} from "../store/user/user.action";

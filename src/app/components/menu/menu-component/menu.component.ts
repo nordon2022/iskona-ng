@@ -82,11 +82,6 @@ export class MenuComponent implements OnInit {
         command: (event) => this.routeMenu(event.item.label, 'gallery')
       },
       {
-        label:'Skyeng',
-        icon:'pi pi-fw pi-image',
-        command: (event) => this.routeMenu(event.item.label, 'skyeng')
-      },
-      {
         label:'Информация',
         icon:'pi pi-fw pi-info-circle',
         command: (event) => this.routeMenu(event.item.label, 'about')
